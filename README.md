@@ -20,6 +20,18 @@ For pushes to the _default_ branch (`master`), in addition to the above Actions,
 1. Create an Amazon user with [EKS IAM role](https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html) permissions to EKS - [eks user role](https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html)
 1. Create a Repository in [Amazon Elastic Container Registry](https://docs.aws.amazon.com/AmazonECR/latest/userguide/Registries.html) to push images to
 1. Follow the [Getting Started Guide](https://docs.aws.amazon.com/eks/latest/userguide/getting-started.html) to set up a cluster on EKS
-1. Generate a kubectl config with credentials to access the cluster - for example: `aws eks update-kubeconfig --name $CLUSTER_NAME --region $AWS_DEFAULT_REGION` - base64 encode this file and save this as the `KUBE_CONFIG_DATA` secret
-      
-      `cat $HOME/.kube/config | base64`
+1. Generate a kubectl config with credentials to access the cluster - for example: `aws eks update-kubeconfig --name $CLUSTER_NAME --region $AWS_DEFAULT_REGION` - base64 encode this file and save this as the `KUBE_CONFIG_DATA` secret:
+   ```
+   cat $HOME/.kube/config | base64
+   ```
+
+   If you are using different AWS profiles locally and don't have the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`
+   environment variables set, prefix the above command with these environment variables:
+   ```
+   AWS_ACCESS_KEY_ID=... AWS_SECRET_ACCESS_KEY=... aws eks update-kubeconfig --name devel2 --region us-west-2
+   ```
+
+   To switch your local config back to using your AWS profile:
+   ```
+   aws eks update-kubeconfig --profile my-aws-profile-name --name devel2
+   ```
