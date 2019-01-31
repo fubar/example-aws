@@ -8,7 +8,7 @@ spec:
     rollingUpdate:
       maxSurge: 1
       maxUnavailable: 1
-  minReadySeconds: 5 
+  minReadySeconds: 5
   template:
     metadata:
       labels:
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: aws-example-octodex
-        image: 377117578606.dkr.ecr.us-west-2.amazonaws.com/aws-example:TAG
+        image: "377117578606.dkr.ecr.us-west-2.amazonaws.com/aws-example:__TAG__"
         ports:
         - containerPort: 5000
         resources:

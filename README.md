@@ -13,7 +13,7 @@ For pushes to a _feature_ branch, the workflow will:
 
 For pushes to the _default_ branch (`master`), in addition to the above Actions, the workflow will:
 
-1. Create a deployment using [config.yml](/config.yml) on the running EKS cluster with the latest container image
+1. Create a deployment using [deployment.yml](/deployment.yml) on the running EKS cluster with the latest container image
 
 ## Prerequisites
 
